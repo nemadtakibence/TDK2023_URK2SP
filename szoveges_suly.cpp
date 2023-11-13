@@ -158,22 +158,22 @@ public:
 
 		//itt határozzuk meg a termékek árait, illetve a vásárolni kívánt mennyiségeket
 		//                          V ITT LEHET SZERKESZTENI
-		c[0]=2000; rel(*this, x[0]>=3);
+		c[0]=2000; rel(*this, x[0]>=0);
 		c[1]=800; rel(*this, x[1]>=0);
-		c[2]=350; rel(*this, x[2]>=0);
+		c[2]=350; rel(*this, x[2]>=3);
 		c[3]=350; rel(*this, x[3]>=2);
 		c[4]=500; rel(*this, x[4]>=0);
-		c[5]=800; rel(*this, x[5]>=5);
-		c[6]=1000; rel(*this, x[6]>=1);
-		c[7]=500; rel(*this, x[7]>=0);
-		c[8]=750; rel(*this, x[8]>=0);
-		c[9]=300; rel(*this, x[9]>=2);
-		c[10]=280; rel(*this, x[10]>=60);
-		c[11]=1000; rel(*this, x[11]>=23);
+		c[5]=800; rel(*this, x[5]>=2);
+		c[6]=1000; rel(*this, x[6]>=0);
+		c[7]=500; rel(*this, x[7]>=3);
+		c[8]=750; rel(*this, x[8]>=8);
+		c[9]=300; rel(*this, x[9]>=0);
+		c[10]=280; rel(*this, x[10]>=0);
+		c[11]=1000; rel(*this, x[11]>=4);
 		c[12]=330; rel(*this, x[12]>=0);
-		c[13]=400; rel(*this, x[13]>=0);
-		c[14]=2500; rel(*this, x[14]>=8);
-		c[15]=800; rel(*this, x[15]>=0);
+		c[13]=400; rel(*this, x[13]>=8);
+		c[14]=2500; rel(*this, x[14]>=0);
+		c[15]=800; rel(*this, x[15]>=2);
 		c[16]=300; rel(*this, x[16]>=0);
 		c[17]=20000; rel(*this, x[17]>=0);
 		c[18]=4000; rel(*this, x[18]>=0);
@@ -335,7 +335,7 @@ public:
 		
 		//10%-os kuponok száma:
 		//         V ITT LEHET SZERKESZTENI
-		rel(*this, 12>=	a[0]+a[1]+a[2]+a[3]
+		rel(*this, 0>=	a[0]+a[1]+a[2]+a[3]
 						+a[4]+a[5]+a[6]+a[7]
 						+a[8]+a[9]+a[10]+a[11]
 						+a[12]+a[13]+a[14]+a[15]
@@ -344,7 +344,7 @@ public:
 		
 		//15%-os kuponok száma:
 		//          V ITT LEHET SZERKESZTENI
-		rel(*this, 	7>=b[0]+b[1]+b[2]+b[3]
+		rel(*this, 	0>=b[0]+b[1]+b[2]+b[3]
 					+b[4]+b[5]+b[6]+b[7]
 					+b[8]+b[9]+b[10]+b[11]
 					+b[12]+b[13]+b[14]+b[15]
@@ -428,12 +428,13 @@ public:
 		k10.update(*this, sz.k10);
 		k15.update(*this, sz.k15);
 		koltseg.update(*this, sz.koltseg);
+		kivant.update(*this, sz.kivant);
 	}
 	virtual Space* copy(void){
 		return new Szoveges(*this);
 	}
 	virtual IntVar cost(void) const{
-		return koltseg;
+		return kivant;
 	}
 	void print(void) const {
     	cout << v << endl;
